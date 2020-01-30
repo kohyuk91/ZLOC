@@ -28,8 +28,11 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# 3DE4.script.name:    ZLOC Maya...
+# 3DE4.script.version:    v0.1.0
+
 # Documentaion:
-# ZLOC is a 2.5D tracker system mainly built for 3DEqualizer and Autodesk Maya. (Inspired by SynthPipe)
+# ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Inspired by SynthPipe)
 
 # Versions:
 # 0.1.0 - Initial release
