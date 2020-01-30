@@ -35,9 +35,10 @@ What you should be using most of the time is the 'Quick' feature. This is what m
 ### Installation
 1. Copy **[Qt.py(Latest release)](https://github.com/mottosso/Qt.py/releases)** and **[zloc_maya.py](maya/scripts/zloc_maya.py)** to:
     - Windows
-        > \Users\USERNAME\Documents\maya\$MAYAVERSION\prefs\scripts
+        > \Users\USERNAME\Documents\maya\scripts<br>
+        > ![](doc/maya/install_scripts.png)
     - Mac
-        > $HOME/maya/MAYAVERSION/prefs/scripts
+        > $HOME/maya/scripts
     - Linux
         > $HOME/maya/scripts
 1. Launch/Restart Maya
