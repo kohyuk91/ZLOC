@@ -17,7 +17,6 @@
 
 from vl_sdv import *
 import __builtin__ as builtin
-import platform
 
 import os
 import tempfile

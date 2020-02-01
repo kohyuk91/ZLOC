@@ -28,15 +28,13 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# 3DE4.script.name:    ZLOC Maya...
-# 3DE4.script.version:    v0.1.0
-
 # Documentaion:
 # ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Inspired by SynthPipe)
-
+# Find out more at https://github.com/kohyuk91/zloc
+#
 # Versions:
 # 0.1.0 - Initial release
-
+#
 # Usage:
 """
 import zloc_maya
@@ -66,7 +64,7 @@ TEMPDIR = tempfile.gettempdir() # Get the path of the system's temp directory
 # print(TEMPDIR):
 # Windows >> c:\users\<USER>\appdata\local\temp
 # Mac >> /var/folders/<...>
-# Linux(CentOS 7.6) >> /usr/tmp
+# Linux(CentOS) >> /usr/tmp
 
 # Decorator for undo support.
 def openCloseChunk(func):
