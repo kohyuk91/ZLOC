@@ -1,6 +1,6 @@
 # ZLOC
 ## What does it do
-ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Original Script - SynthPipe by Martin Kulig)
+ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Based on SynthPipe by Martin Kulig)
 
 
 ## The 'Quick' Workflow
