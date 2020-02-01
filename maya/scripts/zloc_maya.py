@@ -29,7 +29,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Documentaion:
-# ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Inspired by SynthPipe)
+# ZLOC is a 2.5D tracker system built for Science-D-Visions 3DEqualizer and Autodesk Maya. (Original Script - SynthPipe by Martin Kulig)
 # Find out more at https://github.com/kohyuk91/zloc
 #
 # Versions:
