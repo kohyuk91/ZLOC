@@ -33,6 +33,7 @@
 # Find out more at https://github.com/kohyuk91/zloc
 #
 # Versions:
+# 0.1.1 - Naming correction. "Epipolar Line" to "Projection Ray".
 # 0.1.0 - Initial release
 #
 # Usage:

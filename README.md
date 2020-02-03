@@ -25,6 +25,7 @@ What you should be using most of the time is the 'Quick' feature. This is what m
 ## Releases
 | Releases | Description |
 | :--------: | :------------: |
+| v0.1.1 | Naming correction. "Epipolar Line" to "Projection Ray".|
 | v0.1.0 | Initial release |
 
 ## Roadmap
@@ -54,13 +55,13 @@ What you should be using most of the time is the 'Quick' feature. This is what m
     > ```
 ### Interface
 #### Main Tab
-> ![](doc/maya/main_tab_.png)
+> ![](doc/maya/main_tab__.png)
 - Options
     - Frame Offset: Offsets the `time` of all keyframes at creation stage.
     - Flip U: If checked, `-1` is multiplied to ZLOC's U attribute.
     - Flip V: If checked, `-1` is multiplied to ZLOC's V attribute.
-    - Random Color: If checked, assigns a random color for each ZLOC and projection line.
-    - Projection Line: If checked, creates an projection Line for each ZLOC at creation stage. `On` and `Hidden` by default.
+    - Random Color: If checked, assigns a random color for each ZLOC and projection ray.
+    - Projection Ray: If checked, creates an projection ray for each ZLOC at creation stage. `On` and `Hidden` by default.
 - Rename
     - Prefix: Adds a prefix to all ZLOC trackers at creation stage.
     - Suffix: Adds a suffix to all ZLOC trackers at creation stage.
