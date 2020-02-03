@@ -155,8 +155,8 @@ class MainTab(QtWidgets.QWidget):
         self.flip_u_cb = QtWidgets.QCheckBox("U")
         self.flip_v_cb = QtWidgets.QCheckBox("V")
         self.random_color_cb = QtWidgets.QCheckBox()
-        self.epipolar_line_cb = QtWidgets.QCheckBox()
-        self.epipolar_line_cb.toggle() # Default is "ON".
+        self.projection_ray_cb = QtWidgets.QCheckBox()
+        self.projection_ray_cb.toggle() # Default is "ON".
 
         #### Rename ####
         self.prefix_lb = QtWidgets.QLabel("Prefix")
@@ -187,7 +187,7 @@ class MainTab(QtWidgets.QWidget):
         options_Layout.addRow("Frame Offset", self.frame_offset_le)
         options_Layout.addRow("Flip", options_flip_Layout)
         options_Layout.addRow("Random Color", self.random_color_cb)
-        options_Layout.addRow("Epipolar Line", self.epipolar_line_cb)
+        options_Layout.addRow("Projection Ray", self.projection_ray_cb)
         options_GroupBox.setLayout(options_Layout)
 
         #### Rename ####
@@ -240,14 +240,14 @@ class MainTab(QtWidgets.QWidget):
             selCamUUID = mc.ls(selCamTrans, uuid=True)[0]
             selCamUUID_underscore = selCamUUID.replace("-", "_")
             selCamZLocGrp = "zloc_grp_{0}".format(selCamUUID_underscore)
-            selCamZLocEpipolarLineGrp = "zloc_epipolar_line_grp_{0}".format(selCamUUID_underscore)
+            selCamZLocProjectionRayGrp = "zloc_projection_ray_grp_{0}".format(selCamUUID_underscore)
 
             ## Options ##
             frame_offset = int(self.frame_offset_le.text())
             flip_u = self.flip_checked("flip_u_cb") # If checked returns -1, else 1.
             flip_v = self.flip_checked("flip_v_cb") # If checked returns -1, else 1.
             random_color = self.random_color_cb.isChecked()
-            epipolar_line = self.epipolar_line_cb.isChecked()
+            projection_ray = self.projection_ray_cb.isChecked()
 
             ## Rename ##
             prefix = self.get_prefix()
@@ -326,15 +326,15 @@ class MainTab(QtWidgets.QWidget):
                     mc.parentConstraint(selCamTrans, selCamZLocGrp, maintainOffset=False)
                     mc.scaleConstraint(selCamTrans, selCamZLocGrp, maintainOffset=True)
 
-                # Create ZLOC Epipolar Line Group
-                if epipolar_line: # If Epipolar Line checkbox is checked
-                    if mc.objExists(selCamZLocEpipolarLineGrp): # ZLOC Epipolar Line Group Exists
+                # Create ZLOC Projection Ray Group
+                if projection_ray: # If Projection Ray checkbox is checked
+                    if mc.objExists(selCamZLocProjectionRayGrp): # ZLOC Projection Ray Group Exists
                         pass
                     else:
-                        mc.group(name=selCamZLocEpipolarLineGrp, empty=True) # Create ZLOC Epipolar Line Group
-                        mc.hide(selCamZLocEpipolarLineGrp) # Hide ZLOC Epipolar Line Group.
-                        mc.parentConstraint(selCamTrans, selCamZLocEpipolarLineGrp, maintainOffset=False)
-                        mc.scaleConstraint(selCamTrans, selCamZLocEpipolarLineGrp, maintainOffset=True)
+                        mc.group(name=selCamZLocProjectionRayGrp, empty=True) # Create ZLOC Projection Ray Group
+                        mc.hide(selCamZLocProjectionRayGrp) # Hide ZLOC Projection Ray Group.
+                        mc.parentConstraint(selCamTrans, selCamZLocProjectionRayGrp, maintainOffset=False)
+                        mc.scaleConstraint(selCamTrans, selCamZLocProjectionRayGrp, maintainOffset=True)
 
                 for zloc, tde4_color_index in zloc_list:
                     # Create ZLOC
@@ -369,18 +369,18 @@ class MainTab(QtWidgets.QWidget):
 
                     mc.parent(zlocTrans, selCamZLocGrp, relative=True) # Parent ZLOC to ZLOC Group
 
-                    # Epipolar Line
-                    if epipolar_line: # If Epipolar Line checkbox is checked.
-                        epipolarLineTrans = mc.curve(name= zlocTrans + "_epipolar", degree=1, point=[(0,0,0),(0,0,-1000)]) # Create a Nurbs Curve. Length is 1000.
-                        epipolarLineShape = mc.listRelatives(epipolarLineTrans, shapes=True, fullPath=True)[0] # Get Shape Node's name.
+                    # Projection Ray
+                    if projection_ray: # If Projection Ray checkbox is checked.
+                        projectionRayTrans = mc.curve(name= zlocTrans + "_projectionRay", degree=1, point=[(0,0,0),(0,0,-1000)]) # Create a Nurbs Curve. Length is 1000.
+                        projectionRayShape = mc.listRelatives(projectionRayTrans, shapes=True, fullPath=True)[0] # Get Shape Node's name.
 
-                        # Set Epipolar Line Color
-                        mc.setAttr(epipolarLineShape + '.overrideEnabled', 1) # Enable Color Override.
-                        mc.setAttr(epipolarLineShape + '.overrideColor', zloc_color) # Set Color. Same Color as ZLOC.
+                        # Set Projection Ray Color
+                        mc.setAttr(projectionRayShape + '.overrideEnabled', 1) # Enable Color Override.
+                        mc.setAttr(projectionRayShape + '.overrideColor', zloc_color) # Set Color. Same Color as ZLOC.
 
-                        mc.aimConstraint(zlocTrans, epipolarLineTrans, aimVector=[0.0, 0.0, -1.0], maintainOffset=False) # Aim Epipolar Line to ZLOC.
+                        mc.aimConstraint(zlocTrans, projectionRayTrans, aimVector=[0.0, 0.0, -1.0], maintainOffset=False) # Aim Projection Ray to ZLOC.
 
-                        mc.parent(epipolarLineTrans, selCamZLocEpipolarLineGrp, relative=True)
+                        mc.parent(projectionRayTrans, selCamZLocProjectionRayGrp, relative=True)
 
                 if mode != "null": # If mode is "null", skip this loop.
                     # Set Keyframe for each ZLOC's "U" & "V" attributes.

@@ -14,8 +14,8 @@ What you should be using most of the time is the 'Quick' feature. This is what m
 ### Inherit 2D Track Color
 > ![](doc/3de/tde_2dtrack_color.png)<br>
 > ![](doc/3de/maya_2dtrack_color.png)
-### Epipolar Line
-> ![](doc/maya/epipolar_line.png)
+### Projection Ray
+> ![](doc/maya/projection_ray.png)
 ### And more...
 - Time Offset
 - Flip Trackers
@@ -59,8 +59,8 @@ What you should be using most of the time is the 'Quick' feature. This is what m
     - Frame Offset: Offsets the `time` of all keyframes at creation stage.
     - Flip U: If checked, `-1` is multiplied to ZLOC's U attribute.
     - Flip V: If checked, `-1` is multiplied to ZLOC's V attribute.
-    - Random Color: If checked, assigns a random color for each ZLOC and epipolar line.
-    - Epipolar Line: If checked, creates an Epipolar Line for each ZLOC at creation stage. `On` and `Hidden` by default.
+    - Random Color: If checked, assigns a random color for each ZLOC and projection line.
+    - Projection Line: If checked, creates an projection Line for each ZLOC at creation stage. `On` and `Hidden` by default.
 - Rename
     - Prefix: Adds a prefix to all ZLOC trackers at creation stage.
     - Suffix: Adds a suffix to all ZLOC trackers at creation stage.
