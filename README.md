@@ -25,6 +25,7 @@ What you should be using most of the time is the 'Quick' feature. This is what m
 ## Releases
 | Releases | Description |
 | :--------: | :------------: |
+| v0.1.2 | Maya 2017 and above does not require "Qt.py" anymore.|
 | v0.1.1 | Naming correction. "Epipolar Line" to "Projection Ray".|
 | v0.1.0 | Initial release |
 
@@ -34,7 +35,7 @@ What you should be using most of the time is the 'Quick' feature. This is what m
 
 ## Maya
 ### Installation
-1. Copy **[Qt.py(Latest release)](https://github.com/mottosso/Qt.py/releases)** and **[zloc_maya.py](maya/scripts/zloc_maya.py)** to:
+1. Copy **[zloc_maya.py](maya/scripts/zloc_maya.py)** to:
     - Windows
         > \Users\USERNAME\Documents\maya\scripts<br>
         > ![](doc/maya/install_scripts.png)
@@ -42,6 +43,7 @@ What you should be using most of the time is the 'Quick' feature. This is what m
         > $HOME/maya/scripts
     - Linux
         > $HOME/maya/scripts
+    - For Maya 2016 and under, must install **[Qt.py(Latest release)](https://github.com/mottosso/Qt.py/releases)**
 1. Launch/Restart Maya
 1. In Maya, open a Python Tab in the Script Editor and execute:
     > ```python
