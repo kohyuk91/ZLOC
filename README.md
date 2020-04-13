@@ -43,7 +43,6 @@ What you should be using most of the time is the 'Quick' feature. This is what m
         > $HOME/maya/scripts
     - Linux
         > $HOME/maya/scripts
-    - For Maya 2016 and under, must install **[Qt.py(Latest release)](https://github.com/mottosso/Qt.py/releases)**
 1. Launch/Restart Maya
 1. In Maya, open a Python Tab in the Script Editor and execute:
     > ```python
@@ -54,6 +53,7 @@ What you should be using most of the time is the 'Quick' feature. This is what m
     > except:
     >     pass
     > zm = zloc_maya.ZLOC()
+    > zm.show()
     > ```
 ### Interface
 #### Main Tab
