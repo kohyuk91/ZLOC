@@ -33,6 +33,7 @@
 # Find out more at https://github.com/kohyuk91/zloc
 #
 # Versions:
+# 0.1.3 - All versions does not require "Qt.py" anymore. Added 'if __name__ == "__main__": statement'.
 # 0.1.2 - Maya 2017 and above does not require "Qt.py" anymore.
 # 0.1.1 - Naming correction. "Epipolar Line" to "Projection Ray".
 # 0.1.0 - Initial release
@@ -40,20 +41,22 @@
 # Usage:
 """
 import zloc_maya
-reload(zloc_maya)
 try:
     zm.close()
     zm.deleteLater()
 except:
     pass
 zm = zloc_maya.ZLOC()
+zm.show()
 """
 
 try:
-    from Qt import QtCore, QtGui, QtWidgets, QtCompat
-except:
-    from PySide2 import QtCore, QtGui, QtWidgets
-    import shiboken2
+    from PySide import QtGui, QtCore
+    import PySide.QtGui as QtWidgets
+    import shiboken
+except ImportError:
+    from PySide2 import QtGui, QtCore, QtWidgets
+    import shiboken2 as shiboken
 
 
 import maya.cmds as mc
@@ -89,18 +92,15 @@ def openCloseChunk(func):
             return action
     return wrapper
 
-def maya_main_window():
-    main_window_ptr = omui.MQtUtil.mainWindow()
-    try:
-        wi = QtCompat.wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
-    except:
-        wi = shiboken2.wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
-    return wi
 
 class ZLOC(QtWidgets.QDialog):
+    @classmethod
+    def maya_main_window(cls):
+        main_window_ptr = omui.MQtUtil.mainWindow()
+        return shiboken.wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
 
-    def __init__(self, parent=maya_main_window()):
-        super(ZLOC, self).__init__(parent)
+    def __init__(self):
+        super(ZLOC, self).__init__(self.maya_main_window())
 
         self.setWindowTitle("ZLOC")
         self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
@@ -114,7 +114,6 @@ class ZLOC(QtWidgets.QDialog):
         self.create_layouts()
         self.create_connections()
 
-        self.show()
 
     def create_widgets(self):
         self.main_tabWidget = QtWidgets.QTabWidget()
@@ -509,3 +508,12 @@ class AboutTab(QtWidgets.QWidget):
 
     def create_connections(self):
         pass
+
+if __name__ == "__main__":
+    try:
+        zm.close()
+        zm.deleteLater()
+    except:
+        pass
+    zm = ZLOC()
+    zm.show()
